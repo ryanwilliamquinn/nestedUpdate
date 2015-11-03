@@ -9,6 +9,7 @@ module.exports = {
 
   attributes: {
     type: 'string',
+    size: 'string',
     owner: {
       model: 'user'
     }

@@ -15,7 +15,7 @@ module.exports.bootstrap = function(cb) {
       .then(function(userCount) {
         if (userCount > 0) return;
 
-        return User.create({ name: 'ryan', hats: [{ type: 'baseball'}, {type: 'sombrero'}]});
+        return User.create({ name: 'ryan', hats: [{ type: 'baseball', size: '10.5' }, {type: 'sombrero', size: '6'}]});
       })
       .then(function () {
         cb();

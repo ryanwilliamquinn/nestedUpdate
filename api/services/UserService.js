@@ -1,4 +1,5 @@
 var Promise = require('bluebird');
+var _ = require("lodash");
 
 module.exports = {
   doNestedUpdate: function(id) {
@@ -17,8 +18,39 @@ module.exports = {
                 type: 'safari'
               });
             } else {
-              hat.type = 'used ' + hat.type;
-              return hat.save();
+              return Promise.reject("Pick an option (UserService.js) then delete me.");
+
+              /* Option A - doesn't persist */
+              //hat = {
+              //  "type": "old " + hat.type
+              //};
+
+              /* Option B - throws */
+              //hat = {
+              //  "type": "old " + hat.type
+              //};
+              //return hat.save();
+
+              /* Option C - won't unset unprovided keys */
+              //var newHat = {
+              //  "type": "fedora"
+              //};
+              //hat = _.assign(hat, newHat);
+              //return hat.save();
+
+              /* Option D - also won't unset unprovided keys */
+              //var newHat = {
+              //  "type": "fedora"
+              //};
+              //_.forOwn(newHat, function(value, key) {
+              //  if(_.has(hat, key)) {
+              //    hat[key] = value;
+              //  }
+              //  else {
+              //    delete hat[key];
+              //  }
+              //});
+              //return hat.save();
             }
           })
           .then(function() {
